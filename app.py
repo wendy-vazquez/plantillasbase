@@ -10,5 +10,9 @@ def index():
 def aniexo():
     return render_template('aniexo.html')
 
+@app.route('/autos_antiguos')
+def autos_antiguos():
+    return render_template('autos_antiguos.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
