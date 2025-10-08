@@ -4,24 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi pagina</title>
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitcount+Ink&family=Cinzel:wght@900&family=Kablammo:MORF@23&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitcount+Ink:wght@900&family=Cinzel:wght@900&family=Kablammo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Bitcount+Ink:wght@900&family=Cinzel:wght@900&family=Kablammo:MORF@23&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 </head>
-<body style="background-color: #43a551;">
+<style>
+    h1 {
+        color: rgb(0, 0, 0);
+        text-shadow: 2px 2px 4px #c213b6;
+    }
+    a {
+        color: rgb(0, 0, 0);
+    }
+</style>
+<body style="background-image: url('https://i.pinimg.com/736x/e3/b0/d1/e3b0d1fe44ab1d24668f9da85d0574ba.jpg'); background-size: cover; background-attachment: fixed;">
     <header>
-        <h1 class="text-center" style="font-family: 'Kablammo', system-ui;">Mi Plantilla Base</h1>
+        <h1 class="text-center" style="font-family: 'Kablammo', system-ui; font-size: 48px;">Mi Plantilla Base</h1>
     </header>
     
-    <nav class="navbar bg-primary navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg" style="background-color: #8b1c91a7;">
         <div class="container text-center">
+            <a class="navbar-brand" style="font-family: 'Abril Fatface', system-ui;"  href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" style="font-family: 'Abril Fatface', system-ui;" href="#">INICIO</a>
+                    <a class="nav-link" aria-current="page" style="font-family: 'Abril Fatface', system-ui;" href="#">INICIO</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="#">ANIMALES EXOTICOS</a>
@@ -36,6 +46,11 @@
          </div>
         </div>
     </nav>
+
+    <section>
+        {%% block content %%}
+        {%% endblock %%}
+    </section>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 </body>
