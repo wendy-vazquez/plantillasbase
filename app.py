@@ -4,4 +4,11 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('base.html')
+
+@app.route('/animales_exoticos')
+def aniexo():
+    return render_template('aniexo.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
