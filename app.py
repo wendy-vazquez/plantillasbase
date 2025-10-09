@@ -6,17 +6,21 @@ app = Flask(__name__)
 def index():
     return render_template('inicio.html')
 
-@app.route('/animales_exoticos')
-def aniexo():
-    return render_template('aniexo.html')
+@app.route('/animales')
+def animales():
+    return render_template('animales.html')
 
 @app.route('/autos_antiguos')
 def autos_antiguos():
     return render_template('autos_antiguos.html')
 
-@app.route('/inicio')
-def inicio():
-    return render_template('inicio.html')
+@app.route('/maravillas')
+def maravillas():
+    return render_template('maravillas.html')
+
+@app.route('/acercade')
+def acerca():
+    return render_template('acerca.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

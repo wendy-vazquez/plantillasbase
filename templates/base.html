@@ -26,26 +26,26 @@
     
     <nav class="navbar navbar-expand-lg" style="background-color: #8b1c91c7;">
         <div class="container text-center">
-            <a class="navbar-brand" style="font-family: 'Abril Fatface', system-ui;"  href="{{ url_for('inicio') }}">ฅ⁠^⁠•⁠ﻌ⁠•⁠^⁠ฅ</a>
+            <a class="navbar-brand" style="font-family: 'Abril Fatface', system-ui;"  href="#">ฅ⁠^⁠•⁠ﻌ⁠•⁠^⁠ฅ</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('inicio')}}">INICIO</a>
+                    <a class="nav-link" aria-current="page" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('index')}}">INICIO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="#">ANIMALES EXOTICOS</a>
+                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('animales')}}">ANIMALES EXOTICOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="#">AUTOS ANTIGUOS</a>
+                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('autos_antiguos')}}">AUTOS ANTIGUOS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="#">LAS 7 MARAVILLAS</a>
+                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('maravillas')}}">LAS 7 MARAVILLAS</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="#">ACERCA DE</a>
+                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('acerca')}}">ACERCA DE</a>
                 </li>
             </ul>
          </div>
