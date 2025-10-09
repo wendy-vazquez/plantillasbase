@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('base.html')
+    return render_template('inicio.html')
 
 @app.route('/animales_exoticos')
 def aniexo():
@@ -13,6 +13,10 @@ def aniexo():
 @app.route('/autos_antiguos')
 def autos_antiguos():
     return render_template('autos_antiguos.html')
+
+@app.route('/inicio')
+def inicio():
+    return render_template('inicio.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
