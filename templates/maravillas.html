@@ -1,8 +1,126 @@
 {% extends "base.html" %}
 
 {% block content%}
-<main>
-    <h1>maravillas</h1>
+<main class="container rounded-3" style="background-color: #f2c4e69a;">
+    <h2 class="text-center mb-4" style="font-family: 'Cinzel', serif;">Las 7 Maravillas del Mundo Moderno</h2>
+  <p class="text-center mb-5">
+    Estas son las siete estructuras más impresionantes del mundo moderno, reconocidas por su historia, arquitectura y significado cultural.
+  </p>
+   <div class="row gy-5">
+    
+    <div class="col-lg-6">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://www.mexikoo.com/wp-content/uploads/2019/04/AdobeStock_197925419-1-min.jpeg" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Chichen Itzá">
+        <div class="card-body">
+          <h5 class="card-title">Chichén Itzá (México)</h5>
+          <p class="card-text">Antigua ciudad maya ubicada en Yucatán, famosa por la pirámide de Kukulkán. Es un testimonio impresionante del conocimiento astronómico y arquitectónico de la civilización maya.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/ChichenItza.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+     <div class="col-lg-6">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Coliseo Romano">
+        <div class="card-body">
+          <h5 class="card-title">Coliseo Romano (Italia)</h5>
+          <p class="card-text">El anfiteatro más grande del mundo antiguo, símbolo del Imperio Romano. Fue escenario de espectáculos, batallas y obras históricas.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/coliseo.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://tse3.mm.bing.net/th/id/OIP.PIXSQukArZGLyykDg8nlLAHaE8?cb=12&rs=1&pid=ImgDetMain&o=7&rm=3" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Cristo Redentor">
+        <div class="card-body">
+          <h5 class="card-title">Cristo Redentor (Brasil)</h5>
+          <p class="card-text">La icónica estatua del Cristo Redentor en Río de Janeiro es uno de los símbolos más reconocidos de América Latina y del mundo.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/cristo.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="col-lg-6">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://www.nationalgeographic.com.es/medio/2015/09/24/hemis_0899041_1800x1198.jpg" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Muralla China">
+        <div class="card-body">
+          <h5 class="card-title">La Gran Muralla China</h5>
+          <p class="card-text">Construida para proteger el imperio chino de invasiones, la muralla se extiende a lo largo de miles de kilómetros y es visible desde el espacio.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/muralla.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/e/eb/Machu_Picchu%2C_Peru.jpg" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Machu Picchu">
+        <div class="card-body">
+          <h5 class="card-title">Machu Picchu (Perú)</h5>
+          <p class="card-text">Antigua ciudad inca enclavada en los Andes peruanos, una de las obras arquitectónicas más misteriosas y bellas del planeta.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/machu.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://i.natgeofe.com/n/69e2cf60-ad59-4d20-bdd1-dc96f40ab4e8/petra-world-heritage-jordan.jpg" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Petra">
+        <div class="card-body">
+          <h5 class="card-title">Petra (Jordania)</h5>
+          <p class="card-text">La ciudad de piedra tallada por los nabateos, famosa por su arquitectura monumental y su color rosado.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/petra.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 mx-auto">
+      <div class="card shadow" style="background-color: #b543d7ff">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Taj-Mahal.jpg" class="card-img-top" style="height: 300px; object-fit: cover;" alt="Taj Mahal">
+        <div class="card-body">
+          <h5 class="card-title">Taj Mahal (India)</h5>
+          <p class="card-text">Mausoleo construido por el emperador Shah Jahan en honor a su esposa. Es una joya del arte musulmán en la India.</p>
+          <div class="ratio ratio-16x9">
+            <video controls>
+            <source src="{{ url_for('static', filename='video/taj.mp4') }}" type="video/mp4">
+            Tu navegador no soporta el video.
+           </video>
+        </div>
+      </div>
+    </div>
+
+</div>
 </main>
 
 {% endblock %}
