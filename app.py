@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)
 
-app.config('SECRET_KEY')='una_clave_secreta_larga_y_muy_ificil_de_adivinar'
+
 
 @app.route('/')
 def index():
@@ -23,6 +23,16 @@ def maravillas():
 @app.route('/acercade')
 def acerca():
     return render_template('acerca.html')
+
+@app.route('/registrame', methods=("GET","POST"))
+def registrarme():
+    error = None
+    if request.method == "POST":
+        nombre = request.form[nombre]
+        apellidos = request.form[apellidos]
+        fechanacimiento = request.form[fechanacimiento]
+        generomuj = request.form[generomuj]
+        generomasc = request.form[generomasc]
 
 @app.route('/registro')
 def registro():

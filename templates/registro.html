@@ -2,24 +2,24 @@
 
 {% block content %}
 <body >
- <main class="container" style="background-image: url('https://i.pinimg.com/736x/5e/87/67/5e8767151a1e3888069340722e9e637b.jpg'); background-size: cover; background-attachment: fixed;">
-        <form class="bg-white p-4 rounded shadow" style="max-width: 500px; margin: auto;">
+ <main class="container">
+        <form id="registerform" method="post" action="reg" class="bg-white p-4 rounded shadow" style="max-width: 500px; margin: auto;">
             <h1 class="text-center">Crea una cuenta</h1>
             <h5 class="text-center" style="color:rgba(70, 69, 69, 0.74)">Es rápido y fácil.</h5>
             <hr>
             <div class="row md-2">
                 <div class="col-md-6">
-                    <input type="text" id="name" name="name" placeholder="Nombre" required required length="3" maxlength="100">
+                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required required length="3" maxlength="100">
                 </div>
                 <div class="col-md-6">
                      <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required length="3" maxlength="100">
                 </div>   
             </div>
 
-            <label class="form-label mt-2">Fecha de nacimiento</label>
+            <label id="fechanacimiento" name="fechanacimiento" class="form-label mt-2">Fecha de nacimiento</label>
             <div class="row md-2">
                 <div class="col">
-                <select class="form-select">
+                <select id="dia" name="dia" class="form-select">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -54,7 +54,7 @@
                 </select>
             </div>
             <div class="col">
-                <select class="form-select">
+                <select id="mes" name="mes" class="form-select">
                     <option>ene.</option>
                     <option>feb.</option>
                     <option>mar.</option>
@@ -70,7 +70,7 @@
                 </select>
             </div>
             <div class="col">
-                <select class="form-select">
+                <select id="año" name="año" class="form-select">
                     <option>1970</option>
                     <option>1971</option>
                     <option>1972</option>
@@ -134,21 +134,21 @@
             <label class="form-label mt-2">Genero</label>
             <div class="row md-2">
                 <div class="form-check border col">
-                    <input class="form-check-input" type="radio" name="genero" id="mujer">
+                    <input id="generomuj" name="generomuj" class="form-check-input" type="radio" name="generomujer" id="mujer">
                     <label class="form-check-label" for="mujer">Mujer</label>
                 </div>
                 <div class="form-check border col">
-                    <input class="form-check-input" type="radio" name="genero" id="hombre">
+                    <input id="generomasc" name="generomasc" class="form-check-input" type="radio" name="generomasculino" id="hombre">
                     <label class="form-check-label" for="hombre">Hombre</label>
                 </div>
                 <div class="form-check border col">
-                    <input class="form-check-input" type="radio" name="genero" id="otro">
+                    <input id="generoOtro" name="generoOtro" class="form-check-input" type="radio" name="generoOtro" id="otro">
                     <label class="form-check-label" for="otro">otro</label>
                 </div>
             </div>
             
-            <input type="email" class="form-control mb-2" placeholder="Correo electrónico" required>
-            <input type="password" class="form-control mb-3" placeholder="Contraseña nueva" required>
+            <input id="correo" type="email" class="form-control mb-2" placeholder="Correo electrónico" required aria-describedby="emailHelp">
+            <input id="contraseña" type="password" class="form-control mb-3" placeholder="Contraseña nueva" required>
 
             <p class="small text-muted">
             Es posible que las personas que usan nuestro servicio hayan subido tu información de contacto a la pagina. 
