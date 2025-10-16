@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, flash, redirect, url_for 
 
 app = Flask(__name__)
+
+app.config('SECRET_KEY')='una_clave_secreta_larga_y_muy_ificil_de_adivinar'
 
 @app.route('/')
 def index():
