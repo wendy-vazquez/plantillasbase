@@ -4,11 +4,29 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY']='una_clave_secreta_muy_larga_y_compleja_1234567890'
 
+usuarios = {}
+
 @app.route('/')
 def index():
     if "usuario" not in session:
         return redirect(url_for("registro"))
     return render_template('inicio.html')
+
+@app.route('/animales')
+def animales():
+    return render_template('animales.html')
+
+@app.route('/autos_antiguos')
+def autos_antiguos():
+    return render_template('autos_antiguos.html')
+
+@app.route('/maravillas')
+def maravillas():
+    return render_template('maravillas.html')
+
+@app.route('/acercade')
+def acerca():
+    return render_template('acerca.html')
 
 @app.route('/registro', methods=["GET", "POST"])
 def registro():
@@ -27,45 +45,22 @@ def registro():
         if correo in usuarios:
             flash("El correo ya está registrado. Intenta con otro o inicia sesión.", "warning")
             return redirect(url_for("registro"))
+        usuarios[correo] = {
+            "nombre": nombre,
+            "apellidos": apellidos,
+            "fecha_nacimiento": f"{dia}/{mes}/{año}",
+            "genero": genero,
+            "contraseña": contraseña
+        }
+        session["usuario"] = nombre
+        flash(f"¡Registro exitoso, {nombre}!", "success")
+        return redirect(url_for("index"))
 
     return render_template('registro.html')
 
-@app.route('/iniciodesesion', methods=["GET", "POST"])
+@app.route('/iniciodesesion')
 def isesion():
-    if request.method == "POST":
-        correo = request.form.get("correo")
-        contraseña = request.form.get("contraseña")
-    if correo in usuarios and usuarios[correo]["contraseña"] == contraseña:
-            session["usuario"] = usuarios[correo]["nombre"]
-            flash(f"Bienvenido de nuevo, {usuarios[correo]['nombre']}!", "success")
-            return redirect(url_for("index"))
-    
-    if correo in usuarios and usuarios[correo]["contraseña"] == contraseña:
-            session["usuario"] = usuarios[correo]["nombre"]
-            flash(f"Bienvenido de nuevo, {usuarios[correo]['nombre']}!", "success")
-            return redirect(url_for("index"))
-    else:
-            flash("Correo o contraseña incorrectos.", "danger")
-            return redirect(url_for("isesion"))
-        
-
-@app.route('/animales')
-def animales():
-    return render_template('animales.html')
-
-@app.route('/autos_antiguos')
-def autos_antiguos():
-    return render_template('autos_antiguos.html')
-
-@app.route('/maravillas')
-def maravillas():
-    return render_template('maravillas.html')
-
-@app.route('/acercade')
-def acerca():
-    return render_template('acerca.html')
-
-
+    return render_template('isesion.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
