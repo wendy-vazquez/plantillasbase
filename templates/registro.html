@@ -4,7 +4,7 @@
     <form
       id="registerform"
       method="post"
-      action="registrame"
+      action="{{ url_for('registro') }}"
       class="bg-white p-4 rounded shadow"
       style="max-width: 500px; margin: auto"
     >
@@ -64,7 +64,7 @@
           </select>
         </div>
         <div class="col">
-          <select name="mes" class="form-select">
+          <select id="mes" name="mes" class="form-select">
             <option>Enero</option>
             <option>Febrero</option>
             <option>Marzo</option>
@@ -80,7 +80,7 @@
           </select>
         </div>
         <div class="col">
-          <select name="año" class="form-select">
+          <select id="año" name="año" class="form-select">
             {% for y in range(1970, 2026) %}
             <option>{{ y }}</option>
             {% endfor %}
