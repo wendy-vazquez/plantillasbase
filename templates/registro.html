@@ -1,105 +1,172 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<body>
+  <main class="container">
+    <form
+      id="registerform"
+      method="post"
+      action="registrame"
+      class="bg-white p-4 rounded shadow"
+      style="max-width: 500px; margin: auto"
+    >
+      <h1 class="text-center">Crea una cuenta</h1>
+      <h5 class="text-center" style="color: rgba(70, 69, 69, 0.74)">
+        Es rápido y fácil.
+      </h5>
+      <hr />
 
-{% block content %}
-<body >
- <main class="container">
-        <form id="registerform" method="post" action="registrame" class="bg-white p-4 rounded shadow" style="max-width: 500px; margin: auto;">
-            <h1 class="text-center">Crea una cuenta</h1>
-            <h5 class="text-center" style="color:rgba(70, 69, 69, 0.74)">Es rápido y fácil.</h5>
-            <hr>
+      {% with messages = get_flashed_messages(with_categories=true) %} {% if
+      messages %} {% for category, message in messages %}
+      <div
+        class="alert alert-{{ category }} alert-dismissible fade show"
+        role="alert"
+      >
+        {{ message }}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+        ></button>
+      </div>
+      {% endfor %} {% endif %} {% endwith %}
 
-{% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-            {{ message }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-          </div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
-
-            <div class="row md-2">
-                <div class="col-md-6">
-                    <input type="text" id="nombre" name="nombre" placeholder="Nombre" required required length="3" maxlength="100">
-                </div>
-                <div class="col-md-6">
-                     <input type="text" id="apellidos" name="apellidos" placeholder="Apellidos" required length="3" maxlength="100">
-                </div>   
-            </div>
-
-            <label id="fechanacimiento" name="fechanacimiento" class="form-label mt-2">Fecha de nacimiento</label>
-            <div class="row md-2">
-                <div class="col">
-                <select id="dia" name="dia" class="form-select">
-                    {% for d in range(1, 32) %}
-                        <option>{{ d }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            <div class="col">
-                <select id="mes" name="mes" class="form-select">
-                    <option>Enero</option>
-                    <option>Febrero</option>
-                    <option>Marzo</option>
-                    <option>Abril</option>
-                    <option>Mayo</option>
-                    <option>Junio</option>
-                    <option>Julio</option>
-                    <option>Agosto</option>
-                    <option>Septiembre</option>
-                    <option>Octubre</option>
-                    <option>Noviembre</option>
-                    <option>Diciembre</option>
-                </select>
-            </div>
-            <div class="col">
-                <select id="año" name="año" class="form-select">
-                    {% for y in range(1970, 2026) %}
-                        <option>{{ y }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-            </div>
-
-            <label class="form-label mt-2">Genero</label>
-            <div class="row md-2">
-                <div class="form-check border col">
-                    <input id="generomuj" name="generomuj" class="form-check-input" type="radio" name="generomujer" id="mujer">
-                    <label class="form-check-label" for="mujer">Mujer</label>
-                </div>
-                <div class="form-check border col">
-                    <input id="generomasc" name="generomasc" class="form-check-input" type="radio" name="generomasculino" id="hombre">
-                    <label class="form-check-label" for="hombre">Hombre</label>
-                </div>
-                <div class="form-check border col">
-                    <input id="generoOtro" name="generoOtro" class="form-check-input" type="radio" name="generoOtro" id="otro">
-                    <label class="form-check-label" for="otro">otro</label>
-                </div>
-            </div>
-            
-            <input id="correo" name="correo" type="email" class="form-control mb-2" placeholder="Correo electrónico" required aria-describedby="emailHelp">
-            <input id="contraseña" name="contraseña" type="password" class="form-control mb-3" placeholder="Contraseña nueva" required>
-
-            <p class="small text-muted">
-            Es posible que las personas que usan nuestro servicio hayan subido tu información de contacto a la pagina. 
-                <a href="#">Más información</a>.
-            </p>
-            <p class="small text-muted">
-            Al hacer clic en Registrarte, aceptas las 
-                <a href="#">Condiciones</a>, la 
-                <a href="#">Política de privacidad</a> y la 
-                <a href="#">Política de cookies</a>.
-            </p>
-
-            <div class="d-grid">
-                <button type="submit" class="btn btn-success" style="background-color: #f70cdcff">Registrarte</button>
-            </div>
-
-            <div class="text-center mt-3">
-          <a href="{{url_for('isesion')}}">¿Ya tienes una cuenta?</a>
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <input
+            type="text"
+            name="nombre"
+            class="form-control"
+            placeholder="Nombre"
+            required
+            minlength="3"
+            maxlength="100"
+          />
         </div>
-        </form>
-    </main>
+        <div class="col-md-6">
+          <input
+            type="text"
+            name="apellidos"
+            class="form-control"
+            placeholder="Apellidos"
+            required
+            minlength="3"
+            maxlength="100"
+          />
+        </div>
+      </div>
+
+      <label class="form-label">Fecha de nacimiento</label>
+      <div class="row mb-3">
+        <div class="col">
+          <select name="dia" class="form-select">
+            {% for d in range(1, 32) %}
+            <option>{{ d }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="col">
+          <select name="mes" class="form-select">
+            <option>Enero</option>
+            <option>Febrero</option>
+            <option>Marzo</option>
+            <option>Abril</option>
+            <option>Mayo</option>
+            <option>Junio</option>
+            <option>Julio</option>
+            <option>Agosto</option>
+            <option>Septiembre</option>
+            <option>Octubre</option>
+            <option>Noviembre</option>
+            <option>Diciembre</option>
+          </select>
+        </div>
+        <div class="col">
+          <select name="año" class="form-select">
+            {% for y in range(1970, 2026) %}
+            <option>{{ y }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <label class="form-label">Género</label>
+      <div class="row mb-3">
+        <div class="form-check col">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="genero"
+            id="mujer"
+            value="Mujer"
+            required
+          />
+          <label class="form-check-label" for="mujer">Mujer</label>
+        </div>
+        <div class="form-check col">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="genero"
+            id="hombre"
+            value="Hombre"
+            required
+          />
+          <label class="form-check-label" for="hombre">Hombre</label>
+        </div>
+        <div class="form-check col">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="genero"
+            id="otro"
+            value="Otro"
+            required
+          />
+          <label class="form-check-label" for="otro">Otro</label>
+        </div>
+      </div>
+
+      <input
+        type="email"
+        name="correo"
+        class="form-control mb-2"
+        placeholder="Correo electrónico"
+        required
+      />
+      <input
+        type="password"
+        name="contraseña"
+        class="form-control mb-3"
+        placeholder="Contraseña nueva"
+        required
+        minlength="6"
+      />
+
+      <p class="small text-muted">
+        Es posible que las personas que usan nuestro servicio hayan subido tu
+        información de contacto a la pagina.
+        <a href="#">Más información</a>.
+      </p>
+      <p class="small text-muted">
+        Al hacer clic en Registrarte, aceptas las
+        <a href="#">Condiciones</a>, la <a href="#">Política de privacidad</a> y
+        la <a href="#">Política de cookies</a>.
+      </p>
+
+      <div class="d-grid">
+        <button
+          type="submit"
+          class="btn btn-success"
+          style="background-color: #f70cdcff"
+          href="url_for('inicio')"
+        >
+          Registrarte
+        </button>
+      </div>
+
+      <div class="text-center mt-3">
+        <a href="{{url_for('isesion')}}">¿Ya tienes una cuenta?</a>
+      </div>
+    </form>
+  </main>
 </body>
 {% endblock %}
