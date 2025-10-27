@@ -4,13 +4,16 @@ app = Flask(__name__)
 
 app.config['SECRET_KEY']='una_clave_secreta_muy_larga_y_compleja_1234567890'
 
-usuarios = {}
+USUARIOS_REGISTRADOS = {
+    'admin@correo.com': {
+        'nombre': 'Admin',
+        'contraseña': 'admin123'
+    }
+}
 
 @app.route('/')
 def index():
-    if "usuario" not in session:
-        return redirect(url_for("registro"))
-    return render_template('inicio.html')
+ return render_template('inicio.html')
 
 @app.route('/animales')
 def animales():
@@ -42,10 +45,10 @@ def registro():
         if not nombre or not apellidos or not correo or not contraseña:
             flash("Todos los campos son obligatorios.", "danger")
             return redirect(url_for("registro"))
-        if correo in usuarios:
+        if correo in USUARIOS_REGISTRADOS:
             flash("El correo ya está registrado. Intenta con otro o inicia sesión.", "warning")
             return redirect(url_for("registro"))
-        usuarios[correo] = {
+        USUARIOS_REGISTRADOS[correo] = {
             "nombre": nombre,
             "apellidos": apellidos,
             "fecha_nacimiento": f"{dia}/{mes}/{año}",
@@ -58,8 +61,14 @@ def registro():
 
     return render_template('registro.html')
 
-@app.route('/iniciodesesion')
+@app.route('/iniciodesesion', methods=["GET", "POST"])
 def isesion():
+    if request.method == "POST":
+        correo = request.form.get("correo")
+        contraseña = request.form.get("contraseña")
+    if not correo or not contraseña:
+            flash("Debes ingresar tu correo y contraseña.", "danger")
+            return redirect(url_for("isesion"))
     return render_template('isesion.html')
 
 if __name__ == '__main__':
