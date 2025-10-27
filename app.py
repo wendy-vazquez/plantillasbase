@@ -63,13 +63,29 @@ def registro():
 
 @app.route('/iniciodesesion', methods=["GET", "POST"])
 def isesion():
-    if request.method == "POST":
-        correo = request.form.get("correo")
+     if request.method == "POST":
+        correo = request.form.get("usuario")
         contraseña = request.form.get("contraseña")
-    if not correo or not contraseña:
+
+        if not correo or not contraseña:
             flash("Debes ingresar tu correo y contraseña.", "danger")
             return redirect(url_for("isesion"))
-    return render_template('isesion.html')
+
+        usuario = USUARIOS_REGISTRADOS.get(correo)
+        if usuario and usuario["contraseña"] == contraseña:
+            session["usuario"] = usuario["nombre"]
+            flash(f"¡Bienvenido, {usuario['nombre']}!", "success")
+            return redirect(url_for("index"))
+        else:
+            flash("Correo o contraseña incorrectos.", "danger")
+            return redirect(url_for("isesion"))
+     return render_template("registro.html")
+ 
+@app.route('/cerrarsesion')
+def cerrarsesion():
+    session.pop("usuario", None)
+    flash("Has cerrado sesión correctamente.", "info")
+    return redirect(url_for("inicio"))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,7 +23,7 @@
         font-optical-sizing: auto;
         font-weight: <weight>;
         font-style: normal;
-        color: #000000ff
+        color: #000000ff 
     }
     h5{
         font-family: "Cinzel", serif;
@@ -58,13 +58,23 @@
                 <li class="nav-item">
                     <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('acerca')}}">ACERCA DE..</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('registro')}}">REGISTRO</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" style="font-family: 'Abril Fatface', system-ui;" href="{{url_for('isesion')}}">
-                    </a>
-                </li>
+               <ul class="navbar-nav">
+                    {% if 'usuario' in session %}
+                        <li class="nav-item">
+                            <span class="nav-link disabled" style="font-weight: bold;">👤 {{ session['usuario'] }}</span>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('registro') }}">Cerrar sesión</a>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('isesion') }}">Iniciar sesión</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('registro') }}">Registro</a>
+                        </li>
+                    {% endif %}
+                </ul>
             </ul>
          </div>
         </div>
