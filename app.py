@@ -74,18 +74,25 @@ def isesion():
         usuario = USUARIOS_REGISTRADOS.get(correo)
         if usuario and usuario["contraseña"] == contraseña:
             session["usuario"] = usuario["nombre"]
+            session["rol"] = usuario["rol"]
             flash(f"¡Bienvenido, {usuario['nombre']}!", "success")
             return redirect(url_for("index"))
+        
+            if usuario["rol"] == "admin":
+                return redirect(url_for("admin_panel"))
+            else:
+                return redirect(url_for("index"))
         else:
             flash("Correo o contraseña incorrectos.", "danger")
             return redirect(url_for("isesion"))
-     return render_template("registro.html")
+        
+     return render_template("isesion.html")
  
 @app.route('/cerrarsesion')
 def cerrarsesion():
     session.pop("usuario", None)
     flash("Has cerrado sesión correctamente.", "info")
-    return redirect(url_for("inicio"))
+    return redirect(url_for("isesion"))
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -2,6 +2,8 @@
 <body>
   <main class="container">
     <form
+      method="POST"
+      action="{{ url_for('isesion') }}"
       class="bg-white p-4 rounded shadow"
       style="max-width: 500px; margin: auto"
     >
@@ -21,19 +23,19 @@
       {% endfor %} {% endif %} {% endwith %}
 
       <div class="mb-3">
-      <label class="form-label">Correo o usuario</label>
-      <input type="text" name="usuario" class="form-control" required>
-    </div>
+        <label class="form-label">Correo o usuario</label>
+        <input type="text" name="usuario" class="form-control" required />
+      </div>
 
-    <div class="mb-3">
-      <label class="form-label">Contraseña</label>
-      <input type="password" name="contraseña" class="form-control" required>
-    </div>
-
-    <div class="d-grid">
-      <button type="submit" class="btn btn-success" style="background-color: #f70cdcff;">Entrar</button>
-    </div>
-
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input
+          type="password"
+          name="contraseña"
+          class="form-control"
+          required
+        />
+      </div>
       <button
         type="submit"
         class="btn btn-primary"
